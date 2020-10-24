@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "710238977319",
+    "firebase_url": "https://agua-planeta-rica.firebaseio.com",
+    "project_id": "agua-planeta-rica",
+    "storage_bucket": "agua-planeta-rica.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710238977319:android:e98826d3ae8d18ef2dbd02",
+        "android_client_info": {
+          "package_name": "com.example.agua_planeta_rica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "710238977319-jirre0b28n0eklumv1vev7dqmr3qu2kd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.agua_planeta_rica",
+            "certificate_hash": "866731529771d033362e5a45172e494aa9f6cc47"
+          }
+        },
+        {
+          "client_id": "710238977319-q85uksmdcqg13ao02h7li98lg2up2f09.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuH7X7xqBLgtgUGRr2hxiOSPTrOvJIsEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "710238977319-q85uksmdcqg13ao02h7li98lg2up2f09.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

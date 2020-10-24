@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">agua_planeta_rica</string>
+    <string name="delivery_name">Repartidor</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Iniciar</string>
+    <string name="action_sign_in_short">Iniciar</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="text_sign_in">Registrar</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="tab_text_1">Mis compras</string>
+    <string name="tab_text_2">Mis pedidos</string>
+    <string name="deliver_tab_text_1">Pedidos</string>
+    <string name="deliver_tab_text_2">Finanzas</string>
+    <string name="app_title">Agua Planeta Rica</string>
+    <string name="action_text_pqr">Pqr</string>
+    <string name="action_text_logout">Cerrar sesión</string>
+    <string name="label_purificadora">Purificadora</string>
+    <string name="label_water">Agua</string>
+    <string name="label_p_r">PLANETA RICA</string>
+    <string name="label_id">Identificacion</string>
+    <string name="label_name">Nombre completo</string>
+    <string name="label_direction">Direccion</string>
+    <string name="label_street">Barrio</string>
+    <string name="label_description">Descripcion de la casa</string>
+    <string name="label_latitude">Coordenada latitud</string>
+    <string name="label_longitude">Coordenada longitud</string>
+    <string name="label_email">Correo electronico</string>
+    <string name="label_sign_up">Registrar</string>
+    <string name="label_back">Regresar</string>
+    <string name="hint_code">Codigo</string>
+    <string name="hint_type_request">Tipo de pedido</string>
+    <string name="label_request">Solicitar pedido</string>
+    <string name="hint_quantity">Cantidad solicitada</string>
+    <string name="hint_total_price">Precio total</string>
+    <string name="hint_detail">Detalle</string>
+    <string name="label_phone">Telefono</string>
+    <string name="title_activity_admin">MainActivity</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_dashboard">Pedidos</string>
+    <string name="title_notifications">Usuarios</string>
+    <string name="title_exit">Salir</string>
+    <string name="title_activity_delivery">MainActivity</string>
+    <string name="title_activity_deliver">DeliverActivity</string>
+    <string name="prompt_empty_products">No hay registro de productos</string>
+    <string name="prompt_text_empty_request">No existen solicitudes de productos</string>
+    <string name="prompt_empty_user">No existen ususarios registrados</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

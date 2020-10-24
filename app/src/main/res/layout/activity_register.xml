@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.register.RegisterActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_margin="15dp"
+            android:id="@+id/back"
+            android:onClick="backActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/convergence"
+            android:textStyle="bold"
+            android:text="@string/label_back"
+            android:textSize="18sp"
+            app:drawableStartCompat="@drawable/ic_arrow_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:drawablePadding="15dp" />
+
+        <EditText
+            android:id="@+id/identification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/convergence"
+            android:hint="@string/label_id"
+            android:autofillHints="@string/label_id"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="@+id/back"
+            app:layout_constraintStart_toStartOf="@+id/back"
+            app:layout_constraintTop_toBottomOf="@+id/back" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/convergence"
+            android:hint="@string/label_name"
+            android:autofillHints="@string/label_name"
+            android:imeOptions="actionNext"
+            android:inputType="textCapCharacters"
+            android:lines="1"
+            app:layout_constraintEnd_toEndOf="@+id/identification"
+            app:layout_constraintStart_toStartOf="@+id/identification"
+            app:layout_constraintTop_toBottomOf="@+id/identification" />
+
+        <EditText
+            android:id="@+id/direction"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/convergence"
+            android:hint="@string/label_direction"
+            android:autofillHints="@string/label_direction"
+            android:imeOptions="actionNext"
+            android:inputType="textCapCharacters"
+            android:lines="1"
+            app:layout_constraintEnd_toEndOf="@+id/name"
+            app:layout_constraintStart_toStartOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/convergence"
+            android:hint="@string/label_phone"
+            android:autofillHints="@string/label_phone"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:lines="1"
+            app:layout_constraintEnd_toEndOf="@+id/direction"
+            app:layout_constraintStart_toStartOf="@+id/direction"
+            app:layout_constraintTop_toBottomOf="@+id/direction" />
+
+        <EditText
+            android:id="@+id/street"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/convergence"
+            android:hint="@string/label_street"
+            android:autofillHints="@string/label_street"
+            android:imeOptions="actionNext"
+            android:inputType="textCapCharacters"
+            android:lines="1"
+            app:layout_constraintEnd_toEndOf="@+id/phone"
+            app:layout_constraintStart_toStartOf="@+id/phone"
+            app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/convergence"
+            android:hint="@string/label_description"
+            android:autofillHints="@string/label_description"
+            android:imeOptions="actionNext"
+            android:inputType="textCapCharacters"
+            android:lines="5"
+            app:layout_constraintEnd_toEndOf="@+id/street"
+            app:layout_constraintStart_toStartOf="@+id/street"
+            app:layout_constraintTop_toBottomOf="@+id/street" />
+
+        <EditText
+            android:id="@+id/latitude"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:enabled="false"
+            android:fontFamily="@font/convergence"
+            android:hint="@string/label_latitude"
+            android:autofillHints="@string/label_latitude"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toEndOf="@+id/description"
+            app:layout_constraintStart_toStartOf="@+id/description"
+            app:layout_constraintTop_toBottomOf="@+id/description" />
+
+        <EditText
+            android:id="@+id/longitude"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:enabled="false"
+            android:fontFamily="@font/convergence"
+            android:hint="@string/label_longitude"
+            android:autofillHints="@string/label_longitude"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toEndOf="@+id/latitude"
+            app:layout_constraintStart_toStartOf="@+id/latitude"
+            app:layout_constraintTop_toBottomOf="@+id/latitude" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/convergence"
+            android:hint="@string/label_email"
+            android:autofillHints="@string/label_email"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="@+id/longitude"
+            app:layout_constraintStart_toStartOf="@+id/longitude"
+            app:layout_constraintTop_toBottomOf="@+id/longitude" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/convergence"
+            android:hint="@string/prompt_password"
+            android:autofillHints="@string/prompt_password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="@+id/email"
+            app:layout_constraintStart_toStartOf="@+id/email"
+            app:layout_constraintTop_toBottomOf="@+id/email" />
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/convergence"
+            android:text="@string/label_sign_up"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:layout_marginBottom="15dp"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/password"
+            app:layout_constraintStart_toStartOf="@+id/password"
+            app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
