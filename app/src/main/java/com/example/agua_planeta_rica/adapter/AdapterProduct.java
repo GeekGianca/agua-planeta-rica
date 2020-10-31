@@ -1,6 +1,7 @@
 package com.example.agua_planeta_rica.adapter;
 
 import android.content.Context;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,17 +42,24 @@ public class AdapterProduct extends RecyclerView.Adapter<ProductViewHolder> {
     }
 }
 
-class ProductViewHolder extends RecyclerView.ViewHolder {
+class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
     private ItemProductLayoutBinding binding;
 
     public ProductViewHolder(@NonNull View itemView) {
         super(itemView);
         binding = ItemProductLayoutBinding.bind(itemView);
+        itemView.setOnCreateContextMenuListener(this);
     }
 
     public void bind(Product product) {
         binding.code.setText(String.format("Codigo: %s", product.getCode()));
         binding.name.setText(String.format("Producto: %s", product.getName()));
         binding.price.setText(String.format("Precio: $%s", Common.DF.format(product.getPrice())));
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        menu.setHeaderTitle("Acción");
+        menu.add(0, 0, getAdapterPosition(), "Eliminar");
     }
 }

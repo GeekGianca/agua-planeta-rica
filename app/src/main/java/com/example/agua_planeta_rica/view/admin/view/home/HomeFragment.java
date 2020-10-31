@@ -1,7 +1,9 @@
 package com.example.agua_planeta_rica.view.admin.view.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -22,6 +24,8 @@ import com.example.agua_planeta_rica.databinding.FragmentHomeBinding;
 import com.example.agua_planeta_rica.databinding.ItemAddProductLayoutBinding;
 import com.example.agua_planeta_rica.model.Product;
 import com.example.agua_planeta_rica.util.Common;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,6 +43,7 @@ public class HomeFragment extends Fragment {
     private List<Product> productList;
     private AlertDialog dialog;
     private ItemAddProductLayoutBinding productBind;
+    private static final String TAG = "HomeFragment";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -109,5 +114,25 @@ public class HomeFragment extends Fragment {
         binding.listProduct.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         binding.listProduct.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        if (item.getTitle().equals("Eliminar")) {
+            remove(productList.get(item.getOrder()));
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    private void remove(Product product) {
+        Log.d(TAG, product.toString());
+        mReference.child("products").child(String.valueOf(product.getCode())).removeValue(new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                Toast.makeText(getContext(), "Producto eliminado.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 }

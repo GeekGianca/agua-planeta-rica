@@ -40,4 +40,13 @@ public class Product {
         this.price = price;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "code=" + code +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
