@@ -1,5 +1,10 @@
 package com.example.agua_planeta_rica.model;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Request {
     private String code;
     private String type;
@@ -11,8 +16,9 @@ public class Request {
     private String userPhone;
     private String username;
     private String state;
+    private boolean deleted;
 
-    public Request(String code, String type, int quantity, double totalPrice, double lat, double lng, String detail, String userPhone, String username, String state) {
+    public Request(String code, String type, int quantity, double totalPrice, double lat, double lng, String detail, String userPhone, String username, String state, boolean deleted) {
         this.code = code;
         this.type = type;
         this.quantity = quantity;
@@ -23,6 +29,7 @@ public class Request {
         this.userPhone = userPhone;
         this.username = username;
         this.state = state;
+        this.deleted = deleted;
     }
 
     public Request() {
@@ -116,5 +123,30 @@ public class Request {
     public Request setState(String state) {
         this.state = state;
         return this;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public Request setDeleted(boolean deleted) {
+        this.deleted = deleted;
+        return this;
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("code", code);
+        result.put("detail", detail);
+        result.put("lat", lat);
+        result.put("lng", lng);
+        result.put("quantity", quantity);
+        result.put("state", state);
+        result.put("totalPrice", totalPrice);
+        result.put("type", type);
+        result.put("username", username);
+        result.put("deleted", deleted);
+        return result;
     }
 }

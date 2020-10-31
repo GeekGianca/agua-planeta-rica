@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private FusedLocationProviderClient fusedLocationClient;
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
+    private boolean isModify = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,26 +110,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     return true;
                 default:
                     return false;
-            }
-        });
-        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 0) {
-                    Common.INSTANCE.placeToPurchases();
-                } else {
-                    Common.INSTANCE.placeToAdapter();
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -246,7 +227,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             mProgress.setCanceledOnTouchOutside(false);
             mProgress.setCancelable(false);
             mProgress.show();
-
             Request request = new Request();
             request.setCode(bindView.code.getText().toString());
             request.setType(bindView.typeRequest.getText().toString());
@@ -258,25 +238,56 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             request.setLat(latitude);
             request.setLng(longitude);
             request.setState(Common.STATE_REQUEST);
-            mReferenceRequest.child(request.getCode()).setValue(request)
-                    .addOnCompleteListener(task -> {
-                        mProgress.dismiss();
-                        mProgress.cancel();
-                        if (task.isSuccessful()) {
-                            mDialog.dismiss();
-                            mDialog.cancel();
-                            Snackbar.make(view, "Solicitud registrada exitosamente.", Snackbar.LENGTH_LONG).show();
-                        }
-                    }).addOnFailureListener(e -> {
-                mProgress.dismiss();
-                mProgress.cancel();
-                Toast.makeText(MainActivity.this, "Error al solicitar.", Toast.LENGTH_SHORT).show();
-            });
+            request.setDeleted(false);
+            if (isModify) {
+                globalModify = null;
+                isModify = false;
+                mReference.child(request.getCode())
+                        .updateChildren(request.toMap());
+                Toast.makeText(this, "Se modifico la solicitud.", Toast.LENGTH_SHORT).show();
+            } else {
+                mReferenceRequest.child(request.getCode()).setValue(request)
+                        .addOnCompleteListener(task -> {
+                            mProgress.dismiss();
+                            mProgress.cancel();
+                            if (task.isSuccessful()) {
+                                mDialog.dismiss();
+                                mDialog.cancel();
+                                Snackbar.make(view, "Solicitud registrada exitosamente.", Snackbar.LENGTH_LONG).show();
+                            }
+                        }).addOnFailureListener(e -> {
+                    mProgress.dismiss();
+                    mProgress.cancel();
+                    Toast.makeText(MainActivity.this, "Error al solicitar.", Toast.LENGTH_SHORT).show();
+                });
+            }
         });
         mMaterial.setView(bindView.getRoot());
         mMaterial.create();
         mDialog = mMaterial.create();
         mDialog.show();
+        if (isModify)
+            setDataInAlert();
+    }
+
+    private void setDataInAlert() {
+        bindView.code.setText(globalModify.getCode());
+        bindView.typeRequest.setListSelection(getSelection(globalModify.getType()));
+        bindView.quantity.setText(String.format("%s", globalModify.getQuantity()));
+        bindView.totalPrice.setText(String.format("%s", globalModify.getTotalPrice()));
+        bindView.detail.setText(globalModify.getDetail());
+    }
+
+    private int getSelection(String type) {
+        return 0;
+    }
+
+    private Request globalModify;
+
+    public void displayRequestModify(Request request) {
+        globalModify = request;
+        isModify = true;
+        requestPermissions();
     }
 
     private double price() {
